@@ -1,0 +1,51 @@
+
+
+<div class="jumbotron">
+    <h1 style="text-align:center;">Eat the Burger</h1>
+    <hr>
+    <div class="container" style="text-align:center;">
+        <p>Type the name of a burger below. Click silverware icon to consume the burger.</p>
+        <form class="create-form">
+            <div class="form-group">
+                <label for="freshBurger">Fresh Burger:</label>
+                <input type="text" id="inputBurger" name="burger">
+                <button type="submit" class="btn btn-success" id="sendBurger"><i class="fas fa-hamburger"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card ">
+            <div class="card-header" style="text-align:center;">
+                <strong>Fresh Burgers</strong>
+            </div>
+            <ul class="list-group list-group-flush">
+                {{#each burgers}}
+                    {{#unless devoured}}
+                        <li class="list-group-item">
+                        <span><strong> {{this.id}}.  {{this.burger_name}} </strong></span>
+                        <button type="button" class="btn btn-warning devourButton" data-id="{{this.id}}" data-devoured="{{devour}}"><span class="fas fa-utensils"></span></button>
+                        </li>
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header" style="text-align:center;"><strong>Devoured Burgers</strong></div>
+            <ul class="list-group list-group-flush">
+                {{#each burgers}}
+                    {{#if devoured}}
+                        <li class="list-group-item">
+                        <span class="text-muted"><strong> {{this.id}}.  {{this.burger_name}} </strong></span>
+                        </li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
